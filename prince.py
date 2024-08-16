@@ -32,10 +32,6 @@ voices = engine.getProperty('voices')
 #print(voices[0].id)
 engine.setProperty('voice', voices[0].id)
 
-
-
-
-
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
@@ -97,7 +93,7 @@ def takeCommand():
     # DEFINING CLICK PICTURE CASE IT WILL CLCK THE PICTURE USING CV2 LIBRAAY
 def clickpicture():
     # Set directory for saving screenshot
-    directory = "C:/Users/ayush/OneDrive/Pictures/Screenshots/"
+    directory = "Your Screenshot Path"
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -156,7 +152,7 @@ def open_chatgpt():
     webbrowser.open(url)
 
 def news():
-    main_url= "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=a6e4c31abb634d1ab93d7f88f2f9b782"
+    main_url= "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=YourApiKEY" #please replace your api with your actual api
     main_page = requests.get(main_url).json()
     articles = main_page["articles"]
     head=[]
@@ -169,7 +165,7 @@ def news():
     # DEFINING PDF REDADER FUNCTION FOR READING THE PDF " IMPORT PYPDF2"
 
 def pdf_reader():
-    book = open("akash1.pdf", "rb")
+    book = open("abc.pdf", "rb")
     pdfReader = PyPDF2.PdfReader(book)
     pages = len(pdfReader.pages)
     speak(f"Total number of pages in this book: {pages}")
@@ -183,7 +179,7 @@ def pdf_reader():
 
 
 def convert_currency(amount, from_currency, to_currency):
-    app_id = 'cd319aa65ed8420fb575838f212e6029'
+    app_id = 'YourApiID' # replace with your api
     url = f"https://openexchangerates.org/api/latest.json?app_id={app_id}&symbols={from_currency},{to_currency}"
     response = requests.get(url)
     if response.status_code == 200:
@@ -198,7 +194,7 @@ def convert_currency(amount, from_currency, to_currency):
     # DEFINING WEATHER FUNCTION
 
 def getWeather(city):
-    api_key = "0703a36cb50e64b35c607c82efc951c3"
+    api_key = "Your Api ID " # replace with your api
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
     data = response.json()
@@ -229,7 +225,7 @@ def send_message(api_key, api_secret, sender, recipient, message):
         
 
 def get_stock_price(symbol):
-    api_key = " VWW74B5AD04N8UEU"
+    api_key = "Your APIID"
     url = f"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol={symbol}&apikey={api_key}"
     response = requests.get(url)
     data = json.loads(response.text)
@@ -264,7 +260,7 @@ def open_webpage(url):
 
 
  # Replace YOUR_APP_ID with your actual app ID
-app_id = '55A4Y5-Y2YWQWQ355'
+app_id = 'Your API ID'
 client = wolframalpha.Client(app_id)
 
 def get_wolframalpha_response(query):
@@ -377,14 +373,14 @@ if __name__ == "__main__":
                 cv2.destroyAllWindows()
     # THIS CASE SEND THE WHATSAPP MESSAGE USING THE PHONE NUMBER             
             elif 'send whatsapp message' in query:
-                kit.sendwhatmsg("+919263830382","this is the testing protocoal",22,59)
+                kit.sendwhatmsg("Your NUMBER WITH COUNTRY CODE","this is the testing protocoal",22,59) #time in HH,MM
     # IT WILL CLICK THE PICTURES
             elif 'picture' in query:
                 clickpicture()
             
     # IT WILL OPEN THE FILES 
             elif 'file' in query:
-                file_path = "C:\\Users\\ayush\\OneDrive\\Desktop" # We Have To change the path of file if we are using any other laptop
+                file_path = "Your File Path" # We Have To change the path of file if we are using any other laptop
                 os.startfile(file_path)
     # IT WILL PROVIDE THE SYSTEM INFORMATION
             elif 'system info' in query:
@@ -570,10 +566,10 @@ if __name__ == "__main__":
 
 
             elif 'send message' in query:
-                api_key = '531bc2e1'
-                api_secret = 'XgEWk8Wc2Wx4P883'
-                sender = '+919263830382'
-                recipient = '+919263830382'
+                api_key = 'YOUR API KEY'
+                api_secret = 'Your API SECRET KEY'
+                sender = 'Your No.'
+                recipient = 'RecipentNO.'
                 message = 'Hello This Is A Testing Message Using Python code'
                 send_message(api_key, api_secret, sender, recipient, message)
 
@@ -586,12 +582,12 @@ if __name__ == "__main__":
                     print(f"The current price of {symbol.upper()} is {price:.2f} USD.")
 
             elif ' about us' in query or 'about' in query:
-                open_webpage('file:///C:/Users/ayush/OneDrive/Desktop/coding/python/about_us.html')
-                speak_webpage('file:///C:/Users/ayush/OneDrive/Desktop/coding/python/about_us.html')
+                open_webpage('Your Local HTMl WEbpage path')
+                speak_webpage('Your Local HTMl WEbpage pathl')
 
             elif 'factor page' in query:
-                webbrowser.open('file:///C:/Users/ayush/OneDrive/Desktop/coding/python/faq_page.html')
-                speak_webpage('file:///C:/Users/ayush/OneDrive/Desktop/coding/python/faq_page.html')
+                webbrowser.open('Your Local HTMl WEbpage path')
+                speak_webpage('Your Local HTMl WEbpage path')
 
             elif 'open chat' in query or 'open chatgpt' in query:
                 open_chatgpt()
@@ -612,7 +608,7 @@ if __name__ == "__main__":
 
             elif 'thank you' in query:
                 speak("You're welcome. Have a great day!")
-                webbrowser.open('file:///C:/Users/ayush/OneDrive/Desktop/coding/python/thankyou.html')
+                webbrowser.open('Your Local HTMl WEbpage path')
                 break
 
 
